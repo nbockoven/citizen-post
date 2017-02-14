@@ -2,5 +2,5 @@
 
 return [
     'adminEmail' => 'admin@example.com',
-    'homeUrl'    => 'gobpost.news',
+    'homeUrl'    => 'citizenpost.news',
 ];
