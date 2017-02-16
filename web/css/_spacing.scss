@@ -1,0 +1,17 @@
+@for $i from 6 to 11 {
+    $measure: $i / 1.75;
+    .pa-#{$i} { padding: #{$measure}rem; }
+    .py-#{$i} { padding-top: #{$measure}rem; padding-bottom: #{$measure}rem; }
+    .pt-#{$i} { padding-top: #{$measure}rem; }
+    .pb-#{$i} { padding-bottom: #{$measure}rem; }
+    .px-#{$i} { padding-left: #{$measure}rem; padding-right: #{$measure}rem; }
+    .pl-#{$i} { padding-left: #{$measure}rem; }
+    .pr-#{$i} { padding-right: #{$measure}rem; }
+    .ma-#{$i} { margin: #{$measure}rem; }
+    .my-#{$i} { margin-top: #{$measure}rem; margin-bottom: #{$measure}rem; }
+    .mt-#{$i} { margin-top: #{$measure}rem; }
+    .mb-#{$i} { margin-bottom: #{$measure}rem; }
+    .mx-#{$i} { margin-left: #{$measure}rem; margin-right: #{$measure}rem; }
+    .ml-#{$i} { margin-left: #{$measure}rem; }
+    .mr-#{$i} { margin-right: #{$measure}rem; }
+}

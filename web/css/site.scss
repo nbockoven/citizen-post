@@ -1,25 +1,29 @@
+@import '_colors';
 @import '_mixins';
+@import '_spacing';
 
-.brand-logo {
-    font-family: serif;
-    font-weight: 600;
+@font-face {
+    font-family: 'Academic';
+    src: url(../fonts/Academic.ttf);
 }
 
-@for $i from 0 to 5 {
-    $unit: rem;
-    @if $i < 1 { $unit: null; }
-    .pa-#{$i} { padding: #{$i}$unit; }
-    .py-#{$i} { padding-top: #{$i}$unit; padding-bottom: #{$i}$unit; }
-    .pt-#{$i} { padding-top: #{$i}$unit; }
-    .pb-#{$i} { padding-bottom: #{$i}$unit; }
-    .px-#{$i} { padding-left: #{$i}$unit; padding-right: #{$i}$unit; }
-    .pl-#{$i} { padding-left: #{$i}$unit; }
-    .pr-#{$i} { padding-right: #{$i}$unit; }
-    .ma-#{$i} { margin: #{$i}$unit; }
-    .my-#{$i} { margin-top: #{$i}$unit; margin-bottom: #{$i}$unit; }
-    .mt-#{$i} { margin-top: #{$i}$unit; }
-    .mb-#{$i} { margin-bottom: #{$i}$unit; }
-    .mx-#{$i} { margin-left: #{$i}$unit; margin-right: #{$i}$unit; }
-    .ml-#{$i} { margin-left: #{$i}$unit; }
-    .mr-#{$i} { margin-right: #{$i}$unit; }
+// CLASSES
+
+.card-well {
+    background-color: $light_gray;
+}
+
+.font-academic {
+    font-family: 'Academic';
+}
+
+.navbar-brand {
+    &.font-academic {
+        font-size: 3rem;
+        line-height: 3rem;
+    }
+}
+
+.sticky-top {
+    top: 5rem;
 }

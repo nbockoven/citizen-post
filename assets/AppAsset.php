@@ -25,6 +25,7 @@ class AppAsset extends AssetBundle
     ];
     public $depends = [
         'yii\web\YiiAsset',
-        'macgyer\yii2materializecss\assets\MaterializeAsset',
+        'yii\bootstrap\BootstrapAsset',
+        'yii\bootstrap\FontAwesomeAsset',
     ];
 }
