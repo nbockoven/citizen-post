@@ -7,23 +7,92 @@
     src: url(../fonts/Academic.ttf);
 }
 
-// CLASSES
+// GLOBAL ******************
+
+*:not( .rounded ):not( .rounded-circle ) {
+    @include border-radius( 0 );
+}
+
+::-moz-selection {
+    color: $green-light;
+    background: $gray-dark;
+}
+
+::selection {
+    color: $green-light;
+    background: $gray-dark;
+}
+
+
+// ELEMENTS ******************
+
+a {
+    &.media {
+        color: inherit;
+        @include perspective( 1000px );
+        transform-style: preserve-3d;
+        &:hover {
+            img {
+                @include transform( rotateY( 40deg ) );
+            }
+        }
+        img {
+            @include transition( all .5s ease-in-out );
+            @include transform( rotateY( 0deg ) );
+            @include transform-origin-x( 0 );
+        }
+    }
+}
+
+footer {
+    a {
+        color: $green-light;
+    }
+}
+
+
+// CLASSES  ******************
+
+.bg-green-dark {
+    background-color: $green-dark;
+}
+
+.bg-green-light {
+    background-color: $green-light;
+}
 
 .card-well {
-    background-color: $light_gray;
+    background-color: $gray-lightest;
 }
 
 .font-academic {
     font-family: 'Academic';
 }
 
-.navbar-brand {
-    &.font-academic {
-        font-size: 3rem;
-        line-height: 3rem;
+.navbar {
+    @include box-shadow( 0 1px 3px rgba(0,0,0,0.6) );
+    .navbar-brand {
+        text-shadow: -1px -1px 0 white;
+        &.font-academic {
+            font-size: 3rem;
+            line-height: 3rem;
+        }
     }
 }
 
 .sticky-top {
     top: 5rem;
+    z-index: 0;
+    img {
+        @include box-shadow( 0 1px 3px rgba(0,0,0,0.6) );
+        @include backface-visibility( hidden );
+    }
+}
+
+.text-green-dark {
+    color: $green-dark;
+}
+
+.text-green-light {
+    color: $green-light;
 }

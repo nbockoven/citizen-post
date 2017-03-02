@@ -1,3 +1,9 @@
+@mixin backface-visibility( $visibility ) {
+  -webkit-backface-visibility: $visibility;
+  -moz-backface-visibility: $visibility;
+  backface-visibility: $visibility;
+}
+
 @mixin border-radius( $radii... ) {
   -webkit-border-radius: $radii;
   -moz-border-radius: $radii;
@@ -10,12 +16,26 @@
   box-shadow: $shadows;
 }
 
+@mixin perspective( $length ) {
+  -webkit-perspective: $length;
+  -moz-perspective: $length;
+  perspective: $length;
+}
+
 @mixin transform( $functions... ) {
   -webkit-transform: $functions;
   -moz-transform: $functions;
   -ms-transform: $functions;
   -o-transform: $functions;
   transform: $functions;
+}
+
+@mixin transform-origin-x( $value ) {
+  -webkit-transform-origin: $value;
+  -moz-transform-origin: $value;
+  -ms-transform-origin: $value;
+  -o-transform-origin: $value;
+  transform-origin: $value;
 }
 
 @mixin transition( $properties... ) {

@@ -26,7 +26,7 @@ AppAsset::register($this);
 <body class="pt-9">
   <?php $this->beginBody() ?>
 
-  <nav class="navbar navbar-toggleable-md navbar-light bg-info fixed-top">
+  <nav class="navbar navbar-toggleable-md navbar-light bg-green-light fixed-top">
     <?
       /*
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -80,7 +80,7 @@ AppAsset::register($this);
         <?= $content ?>
       </div><!-- /.col -->
       <div class="col-lg-4 hidden-md-down">
-        <div class="d-block text-center sticky-top">
+        <div class="ad-block d-block text-center sticky-top">
           <img src="images/ad-space.jpg" alt="ad space here" class="img-fluid mb-3" style="width:336px;height:280px;">
           <img src="images/ad-space.jpg" alt="ad space here" class="img-fluid mb-3" style="width:336px;height:280px;">
         </div><!-- /.d-block -->
@@ -88,15 +88,15 @@ AppAsset::register($this);
     </div><!-- /.row -->
   </div><!-- /.container-fluid -->
 
-  <footer class="text-white bg-brown small">
+  <footer class="text-white bg-inverse small mt-3">
     <div class="container py-6">
       <div class="row">
         <div class="col-lg-6">
           <h5>Citizen Post</h5>
-          <p class="text-primary">
+          <p class="text-green-dark">
             These articles are in jest; purely for fun and entertainment purposes. Some are based on true events and stories, but altered to tell a more compelling, fictional tale.
           </p>
-        </div>
+        </div><!-- .col -->
         <div class="col-6 col-lg-3 text-lg-center">
           <h5>Settings</h5>
           <ul class="list-unstyled">
@@ -105,7 +105,7 @@ AppAsset::register($this);
             <li><a href="#!">Link 3</a></li>
             <li><a href="#!">Link 4</a></li>
           </ul>
-        </div>
+        </div><!-- .col -->
         <div class="col-6 col-lg-3 text-lg-center">
           <h5>Connect</h5>
           <ul class="list-unstyled mb-0">
@@ -114,9 +114,9 @@ AppAsset::register($this);
             <li><a href="#!">Link 3</a></li>
             <li><a href="#!">Link 4</a></li>
           </ul>
-        </div>
+        </div><!-- .col -->
       </div><!-- .row -->
-    </div>
+    </div><!-- .container -->
   </footer>
 
     <?php $this->endBody() ?>
