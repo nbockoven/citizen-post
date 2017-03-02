@@ -35,7 +35,7 @@ AppAsset::register($this);
       */
     ?>
 
-    <a class="navbar-brand font-academic" href="#">C<small>itizen</small> P<small>ost</small></a>
+    <a class="navbar-brand font-academic" href="#">C<small>itizen</small> N<small>ational</small></a>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <?
@@ -68,15 +68,8 @@ AppAsset::register($this);
 
   <div class="container-fluid">
     <div class="row">
-      <div class="col text-center">
-        <img src="images/ad-space.jpg" alt="ad space here" class="img-fluid mb-3" style="width: 970px; height: 90px;">
-      </div><!-- /.col -->
-    </div><!-- /.row -->
-  </div><!-- /.container-fluid -->
-
-  <div class="container">
-    <div class="row">
       <div class="col-lg-8">
+        <img src="images/ad-space.jpg" alt="ad space here" class="img-fluid mb-3 d-flex mx-auto sticky-top" style="width: 970px; height: 90px;">
         <?= $content ?>
       </div><!-- /.col -->
       <div class="col-lg-4 hidden-md-down">
@@ -92,7 +85,7 @@ AppAsset::register($this);
     <div class="container py-6">
       <div class="row">
         <div class="col-lg-6">
-          <h5>Citizen Post</h5>
+          <h5>Citizen National</h5>
           <p class="text-primary">
             These articles are in jest; purely for fun and entertainment purposes. Some are based on true events and stories, but altered to tell a more compelling, fictional tale.
           </p>

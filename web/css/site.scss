@@ -9,6 +9,14 @@
 
 // CLASSES
 
+.bg-transparentish {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.card-img-overlay > .card-title {
+    text-shadow: -1px 1px 1px black, 0 1px 1px black;
+}
+
 .card-well {
     background-color: $light_gray;
 }

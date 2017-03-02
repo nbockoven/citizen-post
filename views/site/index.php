@@ -2,167 +2,25 @@
 
 /* @var $this yii\web\View */
 
-$this->title = 'Citizen Post News';
+$this->title = 'Citizen National News';
 ?>
 
 <div class="card-columns">
-    <div class="card">
-        <img src="images/trump.jpg" alt="trump" class="card-img-top w-100">
-        <div class="card-block">
-            <h4 class="card-title">Trump says, &#8220;There's no time for us&#8221;</h4>
-            <p class="card-text">
-                There's no place for us. What is this thing that builds our dreams, yet slips away from us?
-            </p>
-        </div><!-- /.card-block -->
-    </div><!-- /.card -->
 
-    <div class="card">
-        <img src="images/unicorn.jpg" alt="unicorn" class="card-img-top w-100">
-        <div class="card-block">
-            <h4 class="card-title">&#8220;Who wants to live forever?&#8221;, inquire the Unicorns</h4>
-            <p class="card-text">
-                Who wants to live forever? Oh ooo oh &#8212; There's no chance for us
-            </p>
-        </div><!-- /.card-block -->
-    </div><!-- /.card -->
+    <? $counter = 0; foreach( $articles as $article ): $counter++; ?>
 
-    <div class="card">
-        <img src="images/trump.jpg" alt="trump" class="card-img-top w-100">
-        <div class="card-block">
-            <h4 class="card-title">Trump says, &#8220;There's no time for us&#8221;</h4>
-            <p class="card-text">
-                There's no place for us. What is this thing that builds our dreams, yet slips away from us?
-            </p>
-        </div><!-- /.card-block -->
-    </div><!-- /.card -->
+        <? if( $counter % 4 == 0 ): ?>
+            <div class="card">
+                <img src="#" alt="Ad space here" class="card-img w-100">
+            </div><!-- /.card -->
+        <? endif; ?>
 
-    <div class="card">
-        <img src="images/unicorn.jpg" alt="unicorn" class="card-img-top w-100">
-        <div class="card-block">
-            <h4 class="card-title">&#8220;Who wants to live forever?&#8221;, inquire the Unicorns</h4>
-            <p class="card-text">
-                Who wants to live forever? Oh ooo oh &#8212; There's no chance for us
-            </p>
-        </div><!-- /.card-block -->
-    </div><!-- /.card -->
+        <div class="card card-inverse">
+            <img src="<?= $article['image']; ?>" alt="Article Image" class="card-img w-100">
+            <div class="card-img-overlay d-flex align-content-end">
+                <h4 class="card-title text-white mt-auto mb-0 p-1 bg-transparentish"><?= $article['title']; ?></h4>
+            </div><!-- /.card-img-overlay -->
+        </div><!-- /.card card-inverse -->
+    <? endforeach; ?>
 
-    <div class="card">
-        <img src="images/trump.jpg" alt="trump" class="card-img-top w-100">
-        <div class="card-block">
-            <h4 class="card-title">Trump says, &#8220;There's no time for us&#8221;</h4>
-            <p class="card-text">
-                There's no place for us. What is this thing that builds our dreams, yet slips away from us?
-            </p>
-        </div><!-- /.card-block -->
-    </div><!-- /.card -->
-
-    <div class="card">
-        <img src="images/unicorn.jpg" alt="unicorn" class="card-img-top w-100">
-        <div class="card-block">
-            <h4 class="card-title">&#8220;Who wants to live forever?&#8221;, inquire the Unicorns</h4>
-            <p class="card-text">
-                Who wants to live forever? Oh ooo oh &#8212; There's no chance for us
-            </p>
-        </div><!-- /.card-block -->
-    </div><!-- /.card -->
-
-    <div class="card">
-        <img src="images/trump.jpg" alt="trump" class="card-img-top w-100">
-        <div class="card-block">
-            <h4 class="card-title">Trump says, &#8220;There's no time for us&#8221;</h4>
-            <p class="card-text">
-                There's no place for us. What is this thing that builds our dreams, yet slips away from us?
-            </p>
-        </div><!-- /.card-block -->
-    </div><!-- /.card -->
-
-    <div class="card">
-        <img src="images/unicorn.jpg" alt="unicorn" class="card-img-top w-100">
-        <div class="card-block">
-            <h4 class="card-title">&#8220;Who wants to live forever?&#8221;, inquire the Unicorns</h4>
-            <p class="card-text">
-                Who wants to live forever? Oh ooo oh &#8212; There's no chance for us
-            </p>
-        </div><!-- /.card-block -->
-    </div><!-- /.card -->
-
-    <div class="card">
-        <img src="images/trump.jpg" alt="trump" class="card-img-top w-100">
-        <div class="card-block">
-            <h4 class="card-title">Trump says, &#8220;There's no time for us&#8221;</h4>
-            <p class="card-text">
-                There's no place for us. What is this thing that builds our dreams, yet slips away from us?
-            </p>
-        </div><!-- /.card-block -->
-    </div><!-- /.card -->
-
-    <div class="card">
-        <img src="images/unicorn.jpg" alt="unicorn" class="card-img-top w-100">
-        <div class="card-block">
-            <h4 class="card-title">&#8220;Who wants to live forever?&#8221;, inquire the Unicorns</h4>
-            <p class="card-text">
-                Who wants to live forever? Oh ooo oh &#8212; There's no chance for us
-            </p>
-        </div><!-- /.card-block -->
-    </div><!-- /.card -->
-
-    <div class="card">
-        <img src="images/trump.jpg" alt="trump" class="card-img-top w-100">
-        <div class="card-block">
-            <h4 class="card-title">Trump says, &#8220;There's no time for us&#8221;</h4>
-            <p class="card-text">
-                There's no place for us. What is this thing that builds our dreams, yet slips away from us?
-            </p>
-        </div><!-- /.card-block -->
-    </div><!-- /.card -->
-
-    <div class="card">
-        <img src="images/unicorn.jpg" alt="unicorn" class="card-img-top w-100">
-        <div class="card-block">
-            <h4 class="card-title">&#8220;Who wants to live forever?&#8221;, inquire the Unicorns</h4>
-            <p class="card-text">
-                Who wants to live forever? Oh ooo oh &#8212; There's no chance for us
-            </p>
-        </div><!-- /.card-block -->
-    </div><!-- /.card -->
-
-    <div class="card">
-        <img src="images/trump.jpg" alt="trump" class="card-img-top w-100">
-        <div class="card-block">
-            <h4 class="card-title">Trump says, &#8220;There's no time for us&#8221;</h4>
-            <p class="card-text">
-                There's no place for us. What is this thing that builds our dreams, yet slips away from us?
-            </p>
-        </div><!-- /.card-block -->
-    </div><!-- /.card -->
-
-    <div class="card">
-        <img src="images/unicorn.jpg" alt="unicorn" class="card-img-top w-100">
-        <div class="card-block">
-            <h4 class="card-title">&#8220;Who wants to live forever?&#8221;, inquire the Unicorns</h4>
-            <p class="card-text">
-                Who wants to live forever? Oh ooo oh &#8212; There's no chance for us
-            </p>
-        </div><!-- /.card-block -->
-    </div><!-- /.card -->
-
-    <div class="card">
-        <img src="images/trump.jpg" alt="trump" class="card-img-top w-100">
-        <div class="card-block">
-            <h4 class="card-title">Trump says, &#8220;There's no time for us&#8221;</h4>
-            <p class="card-text">
-                There's no place for us. What is this thing that builds our dreams, yet slips away from us?
-            </p>
-        </div><!-- /.card-block -->
-    </div><!-- /.card -->
-
-    <div class="card">
-        <img src="images/unicorn.jpg" alt="unicorn" class="card-img-top w-100">
-        <div class="card-block">
-            <h4 class="card-title">&#8220;Who wants to live forever?&#8221;, inquire the Unicorns</h4>
-            <p class="card-text">
-                Who wants to live forever? Oh ooo oh &#8212; There's no chance for us
-            </p>
-        </div><!-- /.card-block -->
-    </div><!-- /.card -->
-</div><!-- /.card-columns -->
+</div><!-- .card-columns -->
