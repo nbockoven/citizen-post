@@ -9,6 +9,9 @@ use yii\filters\VerbFilter;
 use app\models\LoginForm;
 use app\models\ContactForm;
 
+use GuzzleHttp\Client;
+use Symfony\Component\DomCrawler\Crawler;
+
 class SiteController extends Controller
 {
     /**
@@ -60,7 +63,48 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        return $this->render('index');
+        $articles = []; // array to save articles
+        $internalErrors = libxml_use_internal_errors(true);
+
+        $numPages = 5;
+        for( $i = 1; $i <= $numPages; $i++ ){
+            // get fake news site page content
+            $client = new Client([
+                'base_uri' => "http://americannews.com",
+                'timeout'  => 2.0,
+                'headers' => [
+                    'User-Agent' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:47.0) Gecko/20100101 Firefox/47.0',
+                ],
+            ]);
+
+            // echo "<pre>";
+            // var_dump( $client );
+            // echo "</pre>";
+            // die();
+
+            $response = $client->request('GET', "/page/{$i}/");
+
+            // create crawler instance from body HTML code
+            $crawler = new Crawler( (string) $response->getBody() );
+
+            // apply filter to grab articles
+            $filter = $crawler->filter('article');
+
+            if( iterator_count( $filter ) ){
+                // iterate over filter results
+                foreach( $filter as $content ){
+                    $crawler = new Crawler( $content );
+                    // extract the values needed
+                    $articles[] = [
+                        'referralURL' => addslashes( $crawler->filter('a')->attr('href') ),
+                        'title'       => addslashes( $crawler->filter('h2')->text() ),
+                        'image'       => addslashes( $crawler->filter('img')->attr('src') ),
+                    ];
+                }
+            }
+        }
+
+        return $this->render('index', ['articles' => $articles]);
     }
 
 
