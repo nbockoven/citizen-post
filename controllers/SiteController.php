@@ -3,17 +3,23 @@
 namespace app\controllers;
 
 use Yii;
+use yii\helpers\Url;
 use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
+
 use app\models\LoginForm;
 use app\models\ContactForm;
 
 use GuzzleHttp\Client;
 use Symfony\Component\DomCrawler\Crawler;
 
+use yii\mongodb\Query;
+
 class SiteController extends Controller
 {
+    public $layout = 'main';
+
     /**
      * @inheritdoc
      */
@@ -61,48 +67,23 @@ class SiteController extends Controller
      *
      * @return string
      */
-    public function actionIndex()
+    public function actionIndex( $page = null )
     {
-        $articles = []; // array to save articles
-        $internalErrors = libxml_use_internal_errors(true);
+        $page = ( intval( $page ) ) ? intval( $page ) : 1;
 
-        $numPages = 5;
-        for( $i = 1; $i <= $numPages; $i++ ){
-            // get fake news site page content
-            $client = new Client([
-                'base_uri' => "http://americannews.com",
-                'timeout'  => 2.0,
-                'headers' => [
-                    'User-Agent' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:47.0) Gecko/20100101 Firefox/47.0',
-                ],
-            ]);
+        // $result = Yii::$app->mongodb->createCommand(['count' => 'restaurants'])->execute();
 
-            // echo "<pre>";
-            // var_dump( $client );
-            // echo "</pre>";
-            // die();
+        // $collection = Yii::$app->mongodb->getCollection('articles');
 
-            $response = $client->request('GET', "/page/{$i}/");
+        $query = new Query();
+        // compose the query
+        $query->select(['canonical', 'title', 'image.small'])
+                ->from('articles')
+                ->limit( 10 )
+                ->offset( 0 )
+                ->orderBy(['date.uploaded' => SORT_DESC]);
 
-            // create crawler instance from body HTML code
-            $crawler = new Crawler( (string) $response->getBody() );
-
-            // apply filter to grab articles
-            $filter = $crawler->filter('article');
-
-            if( iterator_count( $filter ) ){
-                // iterate over filter results
-                foreach( $filter as $content ){
-                    $crawler = new Crawler( $content );
-                    // extract the values needed
-                    $articles[] = [
-                        'referralURL' => addslashes( $crawler->filter('a')->attr('href') ),
-                        'title'       => addslashes( $crawler->filter('h2')->text() ),
-                        'image'       => addslashes( $crawler->filter('img')->attr('src') ),
-                    ];
-                }
-            }
-        }
+        $articles = $query->all();
 
         return $this->render('index', ['articles' => $articles]);
     }
@@ -115,11 +96,23 @@ class SiteController extends Controller
      */
     public function actionView()
     {
-        // get content from db
-        $page = 'db';
-        $this->render('view', ['model' => $model]);
-    }
+        // get article
+        $query = new Query();
+        $query->select(['canonical', 'title', 'body', 'image.large'])
+                ->from('articles')
+                ->where(['canonical' => str_replace('/', '', Url::current())]);
+        $article = $query->one();
 
+        // get trending articles
+        $query = new Query();
+        $query->select(['canonical', 'title', 'image.small'])
+                ->from('articles')
+                ->limit(3)
+                ->where(['<>', 'canonical', str_replace('/', '', Url::current())]);
+        $trending = $query->all();
+
+        return $this->render('view', ['article' => $article, 'trending' => $trending]);
+    }
 
 
     /**

@@ -27,20 +27,9 @@
 // ELEMENTS ******************
 
 a {
-    &.media {
-        color: inherit;
-        @include perspective( 1000px );
-        transform-style: preserve-3d;
-        &:hover {
-            img {
-                @include transform( rotateY( 40deg ) );
-            }
-        }
-        img {
-            @include transition( all .5s ease-in-out );
-            @include transform( rotateY( 0deg ) );
-            @include transform-origin-x( 0 );
-        }
+    &.card {
+        text-decoration: none;
+        cursor: pointer;
     }
 }
 
@@ -50,8 +39,49 @@ footer {
     }
 }
 
+header{
+    border-bottom: 4px solid $green-dark;
+    h1 {
+        a {
+            color: inherit;
+            &:hover {
+                color: rgb(41, 43, 44);
+                text-decoration: none;
+            }
+        }
+    }
+    .form-control {
+        font-family: 'Academic';
+        border-top: 0;
+        border-right: 0;
+        border-left: 0;
+        &:focus {
+            border-bottom: 2px solid $green-light;
+        }
+    }
+    .btn-outline-success {
+        background-color: white;
+        border: 0;
+        &:hover {
+            background-color: white;
+            font-size: 1.1rem;
+            color: $green-dark;
+            cursor: pointer;
+        }
+    }
+}
+
 
 // CLASSES  ******************
+
+.article-body {
+    p{
+        &:first-child {
+            font-size: 1.25rem;
+            font-weight: 300;
+        }
+    }
+}
 
 .bg-green-dark {
     background-color: $green-dark;
@@ -61,12 +91,33 @@ footer {
     background-color: $green-light;
 }
 
+a.card {
+    color: inherit;
+    &:hover, &:focus {
+        .card-title {
+            color: white;
+        }
+    }
+    &.bg-success {
+        background-color: $green-light !important;
+        &:hover {
+            background-color: $green-dark !important;
+        }
+    }
+}
+
 .bg-transparentish {
     background-color: rgba(0, 0, 0, 0.1);
 }
 
-.card-img-overlay > .card-title {
-    text-shadow: -1px 1px 1px black, 0 1px 1px black;
+.bg-white {
+    background-color: white;
+}
+
+.card-inverse {
+    .card-title {
+        // text-shadow: -1px 1px 1px black, 0 1px 1px black;
+    }
 }
 
 .card-well {
@@ -77,19 +128,13 @@ footer {
     font-family: 'Academic';
 }
 
-.navbar {
-    @include box-shadow( 0 1px 3px rgba(0,0,0,0.6) );
-    .navbar-brand {
-        text-shadow: -1px -1px 0 white;
-        &.font-academic {
-            font-size: 3rem;
-            line-height: 3rem;
-        }
-    }
+.heading {
+    border-top: 2px solid $green-light;
+    border-bottom: 2px solid $green-light;
 }
 
 .sticky-top {
-    top: 5rem;
+    top: 1rem;
     z-index: 0;
     img {
         @include box-shadow( 0 1px 3px rgba(0,0,0,0.6) );

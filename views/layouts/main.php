@@ -16,66 +16,28 @@ AppAsset::register($this);
 <html lang="<?= Yii::$app->language ?>">
   <head>
     <meta charset="<?= Yii::$app->charset ?>">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <?= Html::csrfMetaTags() ?>
     <title><?= Html::encode($this->title) ?></title>
 
     <link rel="icon" href="favicon.ico" sizes="16x16 32x32">
     <?php $this->head() ?>
 </head>
-<body class="pt-9">
+<body>
   <?php $this->beginBody() ?>
 
-  <nav class="navbar navbar-toggleable-md navbar-light bg-green-light fixed-top">
-    <?
-      /*
-        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-      */
-    ?>
-
-    <a class="navbar-brand font-academic" href="#">C<small>itizen</small> N<small>ational</small></a>
-
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <?
-        /*
-          <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-              <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Link</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link disabled" href="#">Disabled</a>
-            </li>
-          </ul>
-        */
-      ?>
-      <form class="ml-auto">
-        <div class="input-group">
-          <input class="form-control" type="text" placeholder="Search">
-          <span class="input-group-btn">
-            <button class="btn btn-success my-2 my-sm-0" type="submit">
-              <i class="fa fa-search"></i>
-            </button>
-          </span>
-        </div><!-- /.input-group -->
-      </form>
-    </div>
-  </nav>
+  <?= $this->render('//parts/header.php'); ?>
 
   <div class="container-fluid">
     <div class="row">
       <div class="col-lg-8">
-        <img src="images/ad-space.jpg" alt="ad space here" class="img-fluid mb-3 d-flex mx-auto sticky-top" style="width: 970px; height: 90px;">
+        <img src="images/unicorn.poop.jpg" alt="ad space here" class="img-fluid mb-3 d-flex mx-auto" style="width: 970px; height: 90px;">
         <?= $content ?>
       </div><!-- /.col -->
       <div class="col-lg-4 hidden-md-down">
         <div class="ad-block d-block text-center sticky-top">
-          <img src="images/ad-space.jpg" alt="ad space here" class="img-fluid mb-3" style="width:336px;height:280px;">
-          <img src="images/ad-space.jpg" alt="ad space here" class="img-fluid mb-3" style="width:336px;height:280px;">
+          <img src="images/unicorn.jpg" alt="ad space here" class="img-fluid mb-3" style="width:336px;height:280px;">
+          <img src="images/unicorn.jpg" alt="ad space here" class="img-fluid mb-3" style="width:336px;height:280px;">
         </div><!-- /.d-block -->
       </div><!-- /.col l4 m3 s2 -->
     </div><!-- /.row -->

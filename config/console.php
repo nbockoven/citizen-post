@@ -21,6 +21,10 @@ $config = [
             ],
         ],
         'db' => $db,
+        'mongodb' => [
+            'class' => '\yii\mongodb\Connection',
+            'dsn'   => 'mongodb://N8DaGr8:Thr33Littl3Pigs@localhost:27017/citizennational',
+        ],
     ],
     'params' => $params,
     /*

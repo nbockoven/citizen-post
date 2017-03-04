@@ -38,14 +38,18 @@ $config = [
             ],
         ],
         'db' => require(__DIR__ . '/db.php'),
-        /*
+        'mongodb' => [
+            'class' => '\yii\mongodb\Connection',
+            'dsn'   => 'mongodb://N8DaGr8:Thr33Littl3Pigs@localhost:27017/citizennational',
+        ],
         'urlManager' => [
-            'enablePrettyUrl' => true,
-            'showScriptName' => false,
-            'rules' => [
+            'enablePrettyUrl'     => true,
+            'showScriptName'      => false,
+            'rules'               => [
+                '/'                    => 'site/index',
+                '/<url:[a-zA-Z0-9-]+>' => 'site/view',
             ],
         ],
-        */
     ],
     'params' => $params,
 ];
