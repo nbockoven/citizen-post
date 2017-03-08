@@ -20,7 +20,7 @@ AppAsset::register($this);
     <?= Html::csrfMetaTags() ?>
     <title><?= Html::encode($this->title) ?></title>
 
-    <link rel="icon" href="favicon.ico" sizes="16x16 32x32">
+    <link rel="icon" href="favicon.ico" sizes="16x16 32x32 48x48 64x64 128x128" type="image/vnd.microsoft.icon">
     <?php $this->head() ?>
 </head>
 <body class="bg-green-lightest">
