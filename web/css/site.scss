@@ -27,15 +27,27 @@
 // ELEMENTS ******************
 
 a {
+    color: $green-dark;
+    &:hover {
+        color: $green-light;
+    }
     &.card {
         text-decoration: none;
         cursor: pointer;
+    }
+    &.fa {
+        &:hover {
+            text-decoration: none;
+        }
     }
 }
 
 footer {
     a {
         color: $green-light;
+        &:hover {
+            color: $green-dark;
+        }
     }
 }
 

@@ -51,28 +51,18 @@ AppAsset::register($this);
   <footer class="text-white bg-inverse small mt-3">
     <div class="container py-6">
       <div class="row">
-        <div class="col-lg-6">
+        <div class="col-8">
           <h5>Citizen National</h5>
           <p class="text-green-dark">
-            These articles are in jest; purely for fun and entertainment purposes. Some are based on true events and stories, but altered to tell a more compelling, fictional tale.
+            These articles are in jest; purely for fun and entertainment purposes. Some are based on true events and stories, but altered to tell a more compelling, fictional tale; think <em>National Enquirer.</em>
           </p>
         </div><!-- .col -->
-        <div class="col-6 col-lg-3 text-lg-center">
-          <h5>Settings</h5>
-          <ul class="list-unstyled">
-            <li><a href="#!">Link 1</a></li>
-            <li><a href="#!">Link 2</a></li>
-            <li><a href="#!">Link 3</a></li>
-            <li><a href="#!">Link 4</a></li>
-          </ul>
-        </div><!-- .col -->
-        <div class="col-6 col-lg-3 text-lg-center">
+        <div class="col">
           <h5>Connect</h5>
-          <ul class="list-unstyled mb-0">
-            <li><a href="#!">Link 1</a></li>
-            <li><a href="#!">Link 2</a></li>
-            <li><a href="#!">Link 3</a></li>
-            <li><a href="#!">Link 4</a></li>
+          <ul class="list-inline mb-0">
+            <li class="list-inline-item"><a href="#!" class="fa fa-2x fa-facebook" title="Facebook"></a></li>
+            <li class="list-inline-item"><a href="#!" class="fa fa-2x fa-twitter" title="Twitter"></a></li>
+            <li class="list-inline-item"><a href="#!" class="fa fa-2x fa-google-plus" title="Google+"></a></li>
           </ul>
         </div><!-- .col -->
       </div><!-- .row -->

@@ -95,7 +95,6 @@ class SiteController extends Controller
      */
     public function actionView()
     {
-        die( 'okay?' );
         // get article
         $query = new Query();
         $query->select(['canonical', 'title', 'body', 'image.large'])
