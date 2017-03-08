@@ -60,13 +60,14 @@ class ScrapeController extends Controller
 
                         // extract the values needed
                         $referralURL = $article->filter('a')->attr('href');
+                        $canonical   = str_replace([$url, '/'], '', $referralURL);
 
                         // before continuing, check to see if this is a duplicate (already saved in db)
                         $query = new Query();
                         // compose the query
                         $query->select(['_id'])
                                 ->from('articles')
-                                ->where(['original.url' => $referralURL]);
+                                ->where(['canonical' => $canonical]);
 
                         $numResults = $query->count();
 

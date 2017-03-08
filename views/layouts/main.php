@@ -23,18 +23,23 @@ AppAsset::register($this);
     <link rel="icon" href="favicon.ico" sizes="16x16 32x32">
     <?php $this->head() ?>
 </head>
-<body>
+<body class="bg-green-lightest">
   <?php $this->beginBody() ?>
 
-  <?= $this->render('//parts/header.php'); ?>
-
   <div class="container-fluid">
+    <?= $this->render('//parts/header.php'); ?>
     <div class="row">
-      <div class="col-lg-8">
-        <img src="images/unicorn.poop.jpg" alt="ad space here" class="img-fluid mb-3 d-flex mx-auto" style="width: 970px; height: 90px;">
+      <div class="col-xl-3 hidden-lg-down">
+        <div class="ad-block d-block text-center sticky-top">
+          <img src="images/unicorn.jpg" alt="ad space here" class="img-fluid mb-3" style="width:336px;height:280px;">
+          <img src="images/unicorn.jpg" alt="ad space here" class="img-fluid mb-3" style="width:336px;height:280px;">
+        </div><!-- /.d-block -->
+      </div><!-- /.col-lg-2 hidden-md-down -->
+      <div class="col-lg-8 col-xl-6">
+        <!-- <img src="images/unicorn.poop.jpg" alt="ad space here" class="img-fluid mb-3 d-flex mx-auto" style="width: 970px; height: 90px;"> -->
         <?= $content ?>
       </div><!-- /.col -->
-      <div class="col-lg-4 hidden-md-down">
+      <div class="col-lg-4 col-xl-3 hidden-md-down">
         <div class="ad-block d-block text-center sticky-top">
           <img src="images/unicorn.jpg" alt="ad space here" class="img-fluid mb-3" style="width:336px;height:280px;">
           <img src="images/unicorn.jpg" alt="ad space here" class="img-fluid mb-3" style="width:336px;height:280px;">

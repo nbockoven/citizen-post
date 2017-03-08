@@ -91,13 +91,21 @@ header{
     background-color: $green-light;
 }
 
+.bg-green-lightest {
+    background-color: $green-lightest;
+}
+
+.bg-orange-light {
+    background-color: $orange-light;
+}
+
 a.card {
     color: inherit;
-    &:hover, &:focus {
+    /* &:hover, &:focus {
         .card-title {
             color: white;
         }
-    }
+    } */
     &.bg-success {
         background-color: $green-light !important;
         &:hover {

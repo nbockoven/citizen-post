@@ -3,18 +3,15 @@
 namespace app\controllers;
 
 use Yii;
-use yii\helpers\Url;
-use yii\filters\AccessControl;
-use yii\web\Controller;
-use yii\filters\VerbFilter;
 
-use app\models\LoginForm;
-use app\models\ContactForm;
+use yii\filters\AccessControl;
+use yii\filters\VerbFilter;
+use yii\helpers\Url;
+use yii\mongodb\Query;
+use yii\web\Controller;
 
 use GuzzleHttp\Client;
 use Symfony\Component\DomCrawler\Crawler;
-
-use yii\mongodb\Query;
 
 class SiteController extends Controller
 {
@@ -57,7 +54,7 @@ class SiteController extends Controller
             ],
             'captcha' => [
                 'class' => 'yii\captcha\CaptchaAction',
-                'fixedVerifyCode' => YII_ENV_TEST ? 'testme' : null,
+                'fixedVerifyCode' => YII_ENV_TEST ? 'testit' : null,
             ],
         ];
     }
@@ -75,13 +72,15 @@ class SiteController extends Controller
 
         // $collection = Yii::$app->mongodb->getCollection('articles');
 
+
+
         $query = new Query();
         // compose the query
         $query->select(['canonical', 'title', 'image.small'])
                 ->from('articles')
-                ->limit( 10 )
-                ->offset( 0 )
-                ->orderBy(['date.uploaded' => SORT_DESC]);
+                ->orderBy(['date.uploaded' => SORT_DESC])
+                ->limit( 20 )
+                ->offset( $page - 1 );
 
         $articles = $query->all();
 
@@ -96,6 +95,7 @@ class SiteController extends Controller
      */
     public function actionView()
     {
+        die( 'okay?' );
         // get article
         $query = new Query();
         $query->select(['canonical', 'title', 'body', 'image.large'])
@@ -107,39 +107,11 @@ class SiteController extends Controller
         $query = new Query();
         $query->select(['canonical', 'title', 'image.small'])
                 ->from('articles')
-                ->limit(3)
-                ->where(['<>', 'canonical', str_replace('/', '', Url::current())]);
+                ->where(['<>', 'canonical', str_replace('/', '', Url::current())])
+                ->orderBy(['date.uploaded' => SORT_DESC])
+                ->limit(3);
         $trending = $query->all();
 
         return $this->render('view', ['article' => $article, 'trending' => $trending]);
-    }
-
-
-    /**
-     * Displays contact page.
-     *
-     * @return string
-     */
-    public function actionContact()
-    {
-        $model = new ContactForm();
-        if ($model->load(Yii::$app->request->post()) && $model->contact(Yii::$app->params['adminEmail'])) {
-            Yii::$app->session->setFlash('contactFormSubmitted');
-
-            return $this->refresh();
-        }
-        return $this->render('contact', [
-            'model' => $model,
-        ]);
-    }
-
-    /**
-     * Displays about page.
-     *
-     * @return string
-     */
-    public function actionAbout()
-    {
-        return $this->render('about');
     }
 }
