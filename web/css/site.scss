@@ -1,88 +1,100 @@
+@import url('https://fonts.googleapis.com/css?family=Droid+Sans');
+
 @import '_colors';
 @import '_mixins';
 @import '_spacing';
 
 @font-face {
-    font-family: 'Academic';
-    src: url(../fonts/Academic.ttf);
+  font-family: 'Academic';
+  src: url(../fonts/Academic.ttf);
 }
 
 // GLOBAL ******************
 
 *:not( .rounded ):not( .rounded-circle ) {
-    @include border-radius( 0 );
+  @include border-radius( 0 );
 }
 
 ::-moz-selection {
-    color: $green-light;
-    background: $gray-dark;
+  color: $green-light;
+  background: $gray-dark;
 }
 
 ::selection {
-    color: $green-light;
-    background: $gray-dark;
+  color: $green-light;
+  background: $gray-dark;
 }
 
 
 // ELEMENTS ******************
 
 a {
-    color: $green-dark;
+  color: $green-dark;
+  &:hover {
+    color: $green-light;
+  }
+  &.card, &.media {
+    color: inherit;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  &.fa {
     &:hover {
-        color: $green-light;
+      text-decoration: none;
     }
-    &.card {
-        text-decoration: none;
-        cursor: pointer;
-    }
-    &.fa {
-        &:hover {
-            text-decoration: none;
-        }
-    }
+  }
+}
+
+body {
+  background-color: #dddbd1; /* fallback color if gradients are not supported */
+  background-image: -webkit-linear-gradient(top, #dddbd1, #d2dbdc); /* For Chrome 25 and Safari 6, iOS 6.1, Android 4.3 */
+  background-image: -moz-linear-gradient(top, #dddbd1, #d2dbdc); /* For Firefox (3.6 to 15) */
+  background-image: -o-linear-gradient(top, #dddbd1, #d2dbdc); /* For old Opera (11.1 to 12.0) */
+  background-image: linear-gradient(to bottom, #dddbd1, #d2dbdc); /* Standard syntax; must be last */
+  font-family: 'Droid Sans';
 }
 
 footer {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    a {
-        color: $green-light;
-        &:hover {
-            color: $green-dark;
-        }
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  a {
+    color: $green-light;
+    &:hover {
+      color: $green-dark;
     }
+  }
 }
 
 header{
     border-bottom: 4px solid $green-dark;
     h1 {
-        a {
-            color: inherit;
-            &:hover {
-                color: rgb(41, 43, 44);
-                text-decoration: none;
-            }
+      a {
+        color: inherit;
+        &:hover {
+          color: rgb(41, 43, 44);
+          text-decoration: none;
         }
+      }
     }
     .form-control {
-        font-family: 'Academic';
-        border-top: 0;
-        border-right: 0;
-        border-left: 0;
-        &:focus {
-            border-bottom: 2px solid $green-light;
-        }
+      font-family: 'Academic';
+      border-top: 0;
+      border-right: 0;
+      border-left: 0;
+      &:focus {
+        border-bottom: 2px solid $green-light;
+      }
     }
     .btn-outline-success {
-        background-color: white;
-        border: 0;
-        &:hover {
-            background-color: white;
-            font-size: 1.1rem;
-            color: $green-dark;
-            cursor: pointer;
-        }
+      background-color: white;
+      border: 0;
+      &:hover {
+          background-color: white;
+          font-size: 1.1rem;
+          color: $green-dark;
+          cursor: pointer;
+      }
     }
 }
 
@@ -125,21 +137,6 @@ html {
 
 .bg-white {
     background-color: white;
-}
-
-a.card {
-    color: inherit;
-    /* &:hover, &:focus {
-        .card-title {
-            color: white;
-        }
-    } */
-    &.bg-success {
-        background-color: $green-light !important;
-        &:hover {
-            background-color: $green-dark !important;
-        }
-    }
 }
 
 .font-academic {
