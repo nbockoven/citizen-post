@@ -80,17 +80,25 @@ class SiteController extends Controller
 
         $keyword = ( isset( $keyword ) && is_string( $keyword ) ) ? trim( strip_tags( $keyword ) ) : '';
 
-        // compose the query
+        // get total number of results
         $query->select( ['canonical', 'title', 'image.small'] )
                 ->from( 'articles' )
-                ->where(['or', ['like', 'title', $keyword], ['like', 'body', $keyword]])
+                ->where( ['or', ['like', 'title', $keyword], ['like', 'body', $keyword]] );
+
+        $pagination['total'] = ceil( $query->count() / $limit );
+
+        // determine if pagination should be shown
+        $pagination['show'] = $pagination['current'] < $pagination['total'];
+
+        // get results paginated
+        $query->select( ['canonical', 'title', 'image.small'] )
+                ->from( 'articles' )
+                ->where( ['or', ['like', 'title', $keyword], ['like', 'body', $keyword]] )
                 ->orderBy( ['date.uploaded' => SORT_DESC] )
                 ->limit( $limit )
                 ->offset( $offset );
 
         $articles = $query->all();
-
-        // TO-DO: GET TOTAL NUMBER OF PAGES
 
         return $this->render('index', ['articles' => $articles, 'pagination' => $pagination]);
     }
