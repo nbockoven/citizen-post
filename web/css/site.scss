@@ -43,6 +43,9 @@ a {
 }
 
 footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
     a {
         color: $green-light;
         &:hover {
@@ -83,6 +86,11 @@ header{
     }
 }
 
+html {
+    position: relative;
+    min-height: 100%;
+}
+
 
 // CLASSES  ******************
 
@@ -111,6 +119,14 @@ header{
     background-color: $orange-light;
 }
 
+.bg-transparentish {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.bg-white {
+    background-color: white;
+}
+
 a.card {
     color: inherit;
     /* &:hover, &:focus {
@@ -124,24 +140,6 @@ a.card {
             background-color: $green-dark !important;
         }
     }
-}
-
-.bg-transparentish {
-    background-color: rgba(0, 0, 0, 0.1);
-}
-
-.bg-white {
-    background-color: white;
-}
-
-.card-inverse {
-    .card-title {
-        // text-shadow: -1px 1px 1px black, 0 1px 1px black;
-    }
-}
-
-.card-well {
-    background-color: $gray-lightest;
 }
 
 .font-academic {

@@ -64,27 +64,35 @@ class SiteController extends Controller
      *
      * @return string
      */
-    public function actionIndex( $page = null )
+    public function actionIndex( $page = null, $keyword = null )
     {
-        $page = ( intval( $page ) ) ? intval( $page ) : 1;
+        // get current page number
+        $pagination['current'] = ( intval( $page ) ) ? intval( $page ) : 1;
+        // set prev and next pages
+        $pagination['prev'] = $pagination['current'] - 1;
+        $pagination['next'] = $pagination['current'] + 1;
 
-        // $result = Yii::$app->mongodb->createCommand(['count' => 'restaurants'])->execute();
-
-        // $collection = Yii::$app->mongodb->getCollection('articles');
-
-
+        // set query limit and offset
+        $limit  = 20;
+        $offset = $limit * $pagination['prev'];
 
         $query = new Query();
+
+        $keyword = ( isset( $keyword ) && is_string( $keyword ) ) ? trim( strip_tags( $keyword ) ) : '';
+
         // compose the query
-        $query->select(['canonical', 'title', 'image.small'])
-                ->from('articles')
-                ->orderBy(['date.uploaded' => SORT_DESC])
-                ->limit( 20 )
-                ->offset( $page - 1 );
+        $query->select( ['canonical', 'title', 'image.small'] )
+                ->from( 'articles' )
+                ->where(['or', ['like', 'title', $keyword], ['like', 'body', $keyword]])
+                ->orderBy( ['date.uploaded' => SORT_DESC] )
+                ->limit( $limit )
+                ->offset( $offset );
 
         $articles = $query->all();
 
-        return $this->render('index', ['articles' => $articles]);
+        // TO-DO: GET TOTAL NUMBER OF PAGES
+
+        return $this->render('index', ['articles' => $articles, 'pagination' => $pagination]);
     }
 
 

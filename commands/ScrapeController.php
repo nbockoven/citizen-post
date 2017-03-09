@@ -60,47 +60,50 @@ class ScrapeController extends Controller
 
                         // extract the values needed
                         $referralURL = $article->filter('a')->attr('href');
-                        $canonical   = str_replace([$url, '/'], '', $referralURL);
 
-                        // before continuing, check to see if this is a duplicate (already saved in db)
-                        $query = new Query();
-                        // compose the query
-                        $query->select(['_id'])
-                                ->from('articles')
-                                ->where(['canonical' => $canonical]);
+                        if( strlen( $referralURL ) ){
+                            $canonical = str_replace([$url, '/'], '', $referralURL);
 
-                        $numResults = $query->count();
+                            // before continuing, check to see if this is a duplicate (already saved in db)
+                            $query = new Query();
+                            // compose the query
+                            $query->select(['_id'])
+                                    ->from('articles')
+                                    ->where(['canonical' => $canonical]);
 
-                        if( !$numResults ){ // not found in db, so continue to get data to insert
-                            $imageURL    = $article->filter('img')->attr('src');
+                            $numResults = $query->count();
 
-                            // get detail page content
-                            $canonical   = str_replace([$url, '/'], '', $referralURL);
-                            $response    = $this->CLIENT->request('GET', $canonical);
-                            $articleBody = new Crawler( (string) $response->getBody() );
-                            $articleBody = $articleBody->filter('.post-content > p');
-                            $body        = '';
-                            foreach( $articleBody as $b ){
-                                $text = trim( $b->textContent );
-                                if( strlen( $text ) )
-                                    $body .= "<p>".$text."</p>";
+                            if( !$numResults ){ // not found in db, so continue to get data to insert
+                                $imageURL = $article->filter('img')->attr('src');
+
+                                // get detail page content
+                                $canonical   = str_replace([$url, '/'], '', $referralURL);
+                                $response    = $this->CLIENT->request('GET', $canonical);
+                                $articleBody = new Crawler( (string) $response->getBody() );
+                                $articleBody = $articleBody->filter('.post-content > p');
+                                $body        = '';
+                                foreach( $articleBody as $b ){
+                                    $text = trim( $b->textContent );
+                                    if( strlen( $text ) )
+                                        $body .= "<p>".$text."</p>";
+                                }
+
+                                $temp = [
+                                    'original' => [
+                                        'url'   => addslashes( $referralURL ),
+                                        'image' => addslashes( $imageURL ),
+                                    ],
+                                    'canonical' => $canonical,
+                                    'title' => addslashes( $article->filter('h2')->text() ),
+                                    'body' => addslashes( $body ),
+                                    'date' => [
+                                        'uploaded' => time()
+                                    ]
+                                ];
+
+                                // resize & save image to file system
+                                $articles[] = $this->actionSaveArticleImage( $temp );
                             }
-
-                            $temp = [
-                                'original' => [
-                                    'url'   => addslashes( $referralURL ),
-                                    'image' => addslashes( $imageURL ),
-                                ],
-                                'canonical' => $canonical,
-                                'title' => addslashes( $article->filter('h2')->text() ),
-                                'body' => addslashes( $body ),
-                                'date' => [
-                                    'uploaded' => time()
-                                ]
-                            ];
-
-                            // resize & save image to file system
-                            $articles[] = $this->actionSaveArticleImage( $temp );
                         }
                     }
                 }
@@ -122,7 +125,7 @@ class ScrapeController extends Controller
         // request image
         $request = $this->CLIENT->request('GET', $article['original']['image'], ['sink' => $tempImage]);
 
-        fclose( $tempImage );
+        // fclose( $tempImage );
 
         // manipulate image
         // make to versions (small, large) for listing and detail views

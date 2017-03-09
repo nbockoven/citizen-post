@@ -23,10 +23,10 @@ AppAsset::register($this);
     <link rel="icon" href="favicon.ico" sizes="16x16 32x32 48x48 64x64 128x128" type="image/vnd.microsoft.icon">
     <?php $this->head() ?>
 </head>
-<body class="bg-green-lightest">
+<body class="bg-faded">
   <?php $this->beginBody() ?>
 
-  <div class="container-fluid">
+  <div class="container-fluid content-body">
     <?= $this->render('//parts/header.php'); ?>
     <div class="row">
       <div class="col-xl-3 hidden-lg-down">
@@ -48,7 +48,7 @@ AppAsset::register($this);
     </div><!-- /.row -->
   </div><!-- /.container-fluid -->
 
-  <footer class="text-white bg-inverse small mt-3">
+  <footer class="text-white bg-inverse small w-100">
     <div class="container py-6">
       <div class="row">
         <div class="col-8">
@@ -69,7 +69,7 @@ AppAsset::register($this);
     </div><!-- .container -->
   </footer>
 
-    <?php $this->endBody() ?>
-    </body>
+  <?php $this->endBody() ?>
+  </body>
 </html>
 <?php $this->endPage() ?>
