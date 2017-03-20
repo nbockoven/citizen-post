@@ -1,3 +1,3 @@
-<div class="card mb-4">
-    <img src="images/unicorn.jpg" alt="ad space here" class="card-img w-100" height="250">
+<div class="card mb-4 ad-block">
+    <img src="images/ad.medium.rectangle.png" alt="ad space here" class="card-img w-100">
 </div><!-- /.card -->

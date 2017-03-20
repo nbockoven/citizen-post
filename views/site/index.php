@@ -2,25 +2,26 @@
 
 /* @var $this yii\web\View */
 
-$this->title = 'Citizen National News';
+$this->title   = 'Citizen National News';
+$countArticles = count( $articles );
 ?>
 
-<div class="card-columns" id="article-listing">
-
-  <? if( count( $articles ) ): ?>
-
+<? if( $countArticles <= 3 ): ?>
+  <? foreach( $articles as $article ): ?>
+    <?= $this->render('templates/listing_article_media', ['article' => $article]); ?>
+  <? endforeach; ?>
+<? elseif( $countArticles ): ?>
+  <div class="card-columns">
     <? $counter = 0; foreach( $articles as $article ): $counter++; ?>
       <? if( $counter % 4 == 0 ): ?>
         <?= $this->render('templates/listing_ad'); ?>
       <? endif; ?>
-      <?= $this->render('templates/listing_article', ['article' => $article]); ?>
+      <?= $this->render('templates/listing_article_card', ['article' => $article]); ?>
     <? endforeach; ?>
-
-  <? else: ?>
-    There are no articles found.
-  <? endif; ?>
-
-</div><!-- .card-columns -->
+  </div><!-- /.card-columns -->
+<? else: ?>
+  There are no articles found.
+<? endif; ?>
 
 <? if( $pagination['show'] ): ?>
 

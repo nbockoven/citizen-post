@@ -30,16 +30,17 @@ AppAsset::register($this);
     <?= $this->render('//parts/header.php'); ?>
     <div class="row">
       <div class="col-xl-1 hidden-lg-down">
-        ad space
+        <div class="ad-block d-block text-center sticky-top">
+          <img src="images/ad.skyscraper.png" alt="Ad space here" class="img-fluid">
+        </div><!-- /.ad-block d-block text-center sticky-top -->
       </div><!-- /.col-xl-2 -->
       <div class="col-lg-8">
-        <img src="images/unicorn.poop.jpg" alt="ad space here" class="img-fluid mb-3 d-flex mx-auto" style="width: 970px; height: 90px;">
         <?= $content ?>
       </div><!-- /.col -->
       <div class="col-lg-4 col-xl-3 hidden-md-down">
         <div class="ad-block d-block text-center sticky-top">
-          <img src="images/unicorn.jpg" alt="ad space here" class="img-fluid mb-3" style="width:336px;height:280px;">
-          <img src="images/unicorn.jpg" alt="ad space here" class="img-fluid mb-3" style="width:336px;height:280px;">
+          <img src="images/ad.medium.rectangle.png" alt="ad space here" class="img-fluid mb-3">
+          <img src="images/ad.medium.rectangle.png" alt="ad space here" class="img-fluid mb-3">
         </div><!-- /.d-block -->
       </div><!-- /.col l4 m3 s2 -->
     </div><!-- /.row -->

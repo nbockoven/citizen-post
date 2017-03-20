@@ -17,7 +17,7 @@
         <i class="fa fa-5x fa-facebook"></i>
       </div><!-- /.col-3 -->
       <div class="col">
-        Facebook comments widget here.
+        Facebook comments widget here
       </div><!-- /.col -->
     </div><!-- /.row -->
   </div><!-- /.card -->
