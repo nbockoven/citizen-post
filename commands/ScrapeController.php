@@ -120,7 +120,7 @@ class ScrapeController extends Controller
     {
         $fileName = \Yii::$app->basePath."/web/images/articles/{$article['canonical']}";
 
-        $tempImage = fopen($fileName.'.jpg', 'w') or die('Oh, crap! Couldn\'t open the image file');
+        $tempImage = fopen($fileName.'.jpg', 'w') or die('Oh, crap! Couldn\'t open the image file.');
 
         // request image
         $request = $this->CLIENT->request('GET', $article['original']['image'], ['sink' => $tempImage]);

@@ -15,7 +15,7 @@ use Symfony\Component\DomCrawler\Crawler;
 
 class SiteController extends Controller
 {
-    public $layout = 'main';
+    public $layout = 'main-eternal-listing';
 
     /**
      * @inheritdoc
@@ -66,34 +66,15 @@ class SiteController extends Controller
      */
     public function actionIndex( $page = null, $keyword = null )
     {
-        // get current page number
-        $pagination['current'] = ( intval( $page ) ) ? intval( $page ) : 1;
-        // set prev and next pages
-        $pagination['prev'] = $pagination['current'] - 1;
-        $pagination['next'] = $pagination['current'] + 1;
-
-        // set query limit and offset
-        $limit  = 20;
-        $offset = $limit * $pagination['prev'];
-
         $query = new Query();
 
         $keyword = ( isset( $keyword ) && is_string( $keyword ) ) ? trim( strip_tags( $keyword ) ) : '';
 
-        // get total number of results
-        $query->select( ['canonical', 'title', 'image'] )
-                ->from( 'articles' )
-                ->where( ['or', ['like', 'title', $keyword], ['like', 'body', $keyword]] );
-
-        $pagination['total']['results'] = $query->count();
-
-        $pagination['total']['pages'] = ceil( $pagination['total']['results'] / $limit );
-
-        // determine if pagination should be shown
-        $pagination['show'] = $pagination['current'] < $pagination['total']['pages'];
+        $limit = 20;
+        $offset = 0;
 
         // get results paginated
-        $query->select( ['canonical', 'title', 'image'] )
+        $query->select( ['canonical', 'title', 'body', 'image'] )
                 ->from( 'articles' )
                 ->where( ['or', ['like', 'title', $keyword], ['like', 'body', $keyword]] )
                 ->orderBy( ['date.uploaded' => SORT_DESC] )
@@ -102,7 +83,7 @@ class SiteController extends Controller
 
         $articles = $query->all();
 
-        return $this->render('index', ['articles' => $articles, 'pagination' => $pagination]);
+        return $this->render('index', ['articles' => $articles]);
     }
 
 
@@ -120,15 +101,6 @@ class SiteController extends Controller
                 ->where(['canonical' => str_replace('/', '', Url::current())]);
         $article = $query->one();
 
-        // get trending articles
-        $query = new Query();
-        $query->select(['canonical', 'title', 'image.small'])
-                ->from('articles')
-                ->where(['<>', 'canonical', str_replace('/', '', Url::current())])
-                ->orderBy(['date.uploaded' => SORT_DESC])
-                ->limit(3);
-        $trending = $query->all();
-
-        return $this->render('view', ['article' => $article, 'trending' => $trending]);
+        return $this->render('view', ['article' => $article]);
     }
 }

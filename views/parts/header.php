@@ -1,4 +1,4 @@
-<header class="row py-4 mb-4 bg-white">
+<header class="row py-4 bg-white">
   <div class="col">
     <h1 class="font-academic my-0"><a href="/">C<small>itizen</small> N<small>ational</small></a></h1>
   </div><!-- /.col -->

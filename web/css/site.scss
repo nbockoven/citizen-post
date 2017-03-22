@@ -136,6 +136,10 @@ input[name=keyword] {
     background-color: $orange-light;
 }
 
+.bg-tan {
+  background-color: #dddbd1;
+}
+
 .bg-transparentish {
     background-color: rgba(0, 0, 0, 0.1);
 }
@@ -151,6 +155,12 @@ input[name=keyword] {
 .heading {
     border-top: 2px solid $green-light;
     border-bottom: 2px solid $green-light;
+}
+
+.listing {
+  .row {
+    border-bottom: 1px solid $gray-lightest;
+  }
 }
 
 .sticky-top {

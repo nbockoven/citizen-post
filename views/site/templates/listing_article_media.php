@@ -1,10 +1,12 @@
 <?
-    $cardColor = ( isset( $cardColor ) ) ? $cardColor: 'bg-white';
+    $bgColor = ( isset( $bgColor ) ) ? $bgColor: 'bg-tan';
 ?>
 
-<a href="/<?= $article['canonical']; ?>" class="media mb-4 <?=$cardColor;?>">
-    <img src="images/articles/<?= $article['image']['small']; ?>" alt="Article Image" class="d-flex mr-2" width="200">
-    <div class="media-body px-4 align-self-center">
-        <h5 class="m-0"><?= $article['title']; ?></h5>
-    </div><!-- /.media-body -->
-</a><!-- /.media -->
+<a href="/<?=$article['canonical'];?>" class="row p-4 <?=$bgColor;?>">
+    <div class="col-12">
+        <img src="images/articles/<?= $article['image']['small']; ?>" alt="Article Image" class="img-fluid mb-2">
+    </div><!-- /.col-12 -->
+    <div class="col-12">
+        <?= $article['title']; ?>
+    </div><!-- /.col-12 -->
+</a><!-- /.row -->
