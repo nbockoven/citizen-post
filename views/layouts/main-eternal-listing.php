@@ -28,9 +28,9 @@ AppAsset::register($this);
 
   <div class="container-fluid content-body">
     <?= $this->render('//parts/header'); ?>
-  </div><!-- /.container-fluid -->
 
-  <?= $content; ?>
+    <?= $content; ?>
+  </div><!-- /.container-fluid -->
 
   <footer class="text-white bg-inverse small w-100">
     <div class="container py-6">

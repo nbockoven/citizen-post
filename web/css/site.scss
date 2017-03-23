@@ -44,14 +44,16 @@ a {
       text-decoration: none;
     }
   }
+  &.row {
+    color: black;
+    &:hover {
+      text-decoration: none;
+      background-color: $green-lightest;
+    }
+  }
 }
 
 body {
-  background-color: #dddbd1; /* fallback color if gradients are not supported */
-  background-image: -webkit-linear-gradient(top, #dddbd1, #d2dbdc); /* For Chrome 25 and Safari 6, iOS 6.1, Android 4.3 */
-  background-image: -moz-linear-gradient(top, #dddbd1, #d2dbdc); /* For Firefox (3.6 to 15) */
-  background-image: -o-linear-gradient(top, #dddbd1, #d2dbdc); /* For old Opera (11.1 to 12.0) */
-  background-image: linear-gradient(to bottom, #dddbd1, #d2dbdc); /* Standard syntax; must be last */
   font-family: 'Droid Sans';
 }
 
@@ -68,40 +70,40 @@ footer {
 }
 
 header{
-    border-bottom: 4px solid $green-dark;
-    h1 {
-      a {
-        color: inherit;
-        &:hover {
-          color: rgb(41, 43, 44);
-          text-decoration: none;
-        }
-      }
-    }
-    .form-control {
-      font-family: 'Academic';
-      border-top: 0;
-      border-right: 0;
-      border-left: 0;
-      &:focus {
-        border-bottom: 2px solid $green-light;
-      }
-    }
-    .btn-outline-success {
-      background-color: white;
-      border: 0;
+  border-bottom: 4px solid $green-dark;
+  h1 {
+    a {
+      color: inherit;
       &:hover {
-          background-color: white;
-          font-size: 1.1rem;
-          color: $green-dark;
-          cursor: pointer;
+        color: rgb(41, 43, 44);
+        text-decoration: none;
       }
     }
+  }
+  .form-control {
+    font-family: 'Academic';
+    border-top: 0;
+    border-right: 0;
+    border-left: 0;
+    &:focus {
+      border-bottom: 2px solid $green-light;
+    }
+  }
+  .btn-outline-success {
+    background-color: white;
+    border: 0;
+    &:hover {
+      background-color: white;
+      font-size: 1.1rem;
+      color: $green-dark;
+      cursor: pointer;
+    }
+  }
 }
 
 html {
-    position: relative;
-    min-height: 100%;
+  position: relative;
+  min-height: 100%;
 }
 
 input[name=keyword] {
@@ -112,28 +114,29 @@ input[name=keyword] {
 // CLASSES  ******************
 
 .article-body {
-    p{
-        &:first-child {
-            font-size: 1.25rem;
-            font-weight: 300;
-        }
+  p {
+    &:first-of-type {
+      font-size: 1.25rem;
+      font-weight: 300;
+      line-height: initial;
     }
+  }
 }
 
 .bg-green-dark {
-    background-color: $green-dark;
+  background-color: $green-dark;
 }
 
 .bg-green-light {
-    background-color: $green-light;
+  background-color: $green-light;
 }
 
 .bg-green-lightest {
-    background-color: $green-lightest;
+  background-color: $green-lightest;
 }
 
 .bg-orange-light {
-    background-color: $orange-light;
+  background-color: $orange-light;
 }
 
 .bg-tan {
@@ -141,20 +144,20 @@ input[name=keyword] {
 }
 
 .bg-transparentish {
-    background-color: rgba(0, 0, 0, 0.1);
+  background-color: rgba(0, 0, 0, 0.1);
 }
 
 .bg-white {
-    background-color: white;
+  background-color: white;
 }
 
 .font-academic {
-    font-family: 'Academic';
+  font-family: 'Academic';
 }
 
 .heading {
-    border-top: 2px solid $green-light;
-    border-bottom: 2px solid $green-light;
+  border-top: 2px solid $green-light;
+  border-bottom: 2px solid $green-light;
 }
 
 .listing {
@@ -164,18 +167,18 @@ input[name=keyword] {
 }
 
 .sticky-top {
-    top: 1rem;
-    z-index: 0;
-    img {
-        @include box-shadow( 0 1px 3px rgba(0,0,0,0.6) );
-        @include backface-visibility( hidden );
-    }
+  top: 1rem;
+  z-index: 0;
+  img {
+    @include box-shadow( 0 1px 3px rgba(0,0,0,0.6) );
+    @include backface-visibility( hidden );
+  }
 }
 
 .text-green-dark {
-    color: $green-dark;
+  color: $green-dark;
 }
 
 .text-green-light {
-    color: $green-light;
+  color: $green-light;
 }

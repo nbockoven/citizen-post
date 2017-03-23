@@ -1,21 +1,21 @@
 <? $this->title = $article['title'].' | Citizen National News'; ?>
 
-<div class="row">
+<div class="row" data-view-id="<?=$article['canonical']?>">
   <div class="col">
     <div class="card card-block border-0">
-
-      <img src="#" alt="banner ad here" class="w-100 hidden-lg-up">
 
       <h2 class="mt-0 mb-3"><?= $article['title'];?></h2>
 
       <img src="images/articles/<?= $article['image']['large']; ?>" alt="Article Image" class="w-100 mb-3">
 
+      <img src="images/ad.banner.png" alt="banner ad here" class="img-fluid hidden-lg-up mb-3">
+
       <div class="article-body">
-        <img src="images/ad.medium.rectangle.png" alt="ad space here" class="float-lg-right float-xl-left mb-2 ml-lg-2 mr-xl-2 hidden-md-down">
+        <img src="images/ad.medium.rectangle.png" alt="ad space here" class="float-lg-right float-xl-left mb-2 ml-lg-3 mr-lg-0 mr-xl-3 ml-xl-0 hidden-md-down">
         <?= $article['body'];?>
       </div><!-- /.article-body -->
 
-      <img src="#" alt="banner ad here" class="w-100 hidden-lg-up">
+      <img src="images/ad.banner.png" alt="banner ad here" class="img-fluid hidden-lg-up mb-3">
 
       <h3 class="heading mb-3 py-2 border-top-0">Comments</h3>
 
