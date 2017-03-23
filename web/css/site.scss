@@ -111,7 +111,27 @@ input[name=keyword] {
 }
 
 
+// IDS
+#article-listing {
+  position: fixed;
+  top: 96px;
+  bottom: 0;
+  overflow: hidden;
+}
+
+
 // CLASSES  ******************
+
+.ad-block {
+  &.sticky-top {
+    top: 1rem;
+    z-index: 0;
+    img {
+      @include box-shadow( 0 1px 3px rgba(0,0,0,0.6) );
+      @include backface-visibility( hidden );
+    }
+  }
+}
 
 .article-body {
   p {
@@ -168,11 +188,6 @@ input[name=keyword] {
 
 .sticky-top {
   top: 1rem;
-  z-index: 0;
-  img {
-    @include box-shadow( 0 1px 3px rgba(0,0,0,0.6) );
-    @include backface-visibility( hidden );
-  }
 }
 
 .text-green-dark {

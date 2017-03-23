@@ -21,6 +21,7 @@ class AppAsset extends AssetBundle
         'css/site.css',
     ];
     public $js = [
+        'js/handlebars.min.js',
         'js/magic.js',
     ];
     public $depends = [

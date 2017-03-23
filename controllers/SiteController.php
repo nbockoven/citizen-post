@@ -66,24 +66,26 @@ class SiteController extends Controller
      */
     public function actionIndex( $page = null, $keyword = null )
     {
-        $query = new Query();
+        if( Yii::$app->request->isAjax ){
+            $query = new Query();
 
-        $keyword = ( isset( $keyword ) && is_string( $keyword ) ) ? trim( strip_tags( $keyword ) ) : '';
+            $keyword = ( isset( $keyword ) && is_string( $keyword ) ) ? trim( strip_tags( $keyword ) ) : '';
 
-        $limit = 20;
-        $offset = 0;
+            $limit = 20;
+            $offset = 0;
 
-        // get results paginated
-        $query->select( ['canonical', 'title', 'body', 'image'] )
-                ->from( 'articles' )
-                ->where( ['or', ['like', 'title', $keyword], ['like', 'body', $keyword]] )
-                ->orderBy( ['date.uploaded' => SORT_DESC] )
-                ->limit( $limit )
-                ->offset( $offset );
+            // get results paginated
+            $query->select( ['canonical', 'title', 'body', 'image'] )
+                    ->from( 'articles' )
+                    ->where( ['or', ['like', 'title', $keyword], ['like', 'body', $keyword]] )
+                    ->orderBy( ['date.uploaded' => SORT_DESC] )
+                    ->limit( $limit )
+                    ->offset( $offset );
 
-        $articles = $query->all();
+            return json_encode( $query->all() );
+        }
 
-        return $this->render('index', ['articles' => $articles]);
+        return $this->render('index');
     }
 
 

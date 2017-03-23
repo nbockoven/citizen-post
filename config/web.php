@@ -47,7 +47,8 @@ $config = [
             'showScriptName'      => false,
             'rules'               => [
                 '/'                    => 'site/index',
-                '/<url:[a-zA-Z0-9-]+>' => 'site/view',
+                // '/<url:[a-zA-Z0-9-]+>' => 'site/view',
+                '/<url:[a-zA-Z0-9-]+>' => 'site/index',
             ],
         ],
     ],

@@ -1,6 +1,9 @@
-<? $this->title = $article['title'].' | Citizen National News'; ?>
+<?
+  if( !isset( $this->title ) )
+    $this->title = $article['title'].' | Citizen National News';
+?>
 
-<div class="row" data-view-id="<?=$article['canonical']?>">
+<div class="row" data-view-canonical="<?=$article['canonical']?>">
   <div class="col">
     <div class="card card-block border-0">
 
@@ -32,9 +35,9 @@
     </div><!-- /.card card-block -->
   </div><!-- /.col -->
   <div class="hidden-md-down col-lg-3">
-    <div class="d-block sticky-top">
-      <img src="images/ad.medium.rectangle.png" alt="ad space here" class="w-100 mb-3">
-      <img src="images/ad.medium.rectangle.png" alt="ad space here" class="w-100 mb-3">
+    <div class="ad-block d-block sticky-top text-center">
+      <img src="images/ad.medium.rectangle.png" alt="ad space here" class="img-fluid mb-3">
+      <img src="images/ad.medium.rectangle.png" alt="ad space here" class="img-fluid mb-3">
     </div><!-- /.d-block sticky-top -->
   </div><!-- /.col-3 -->
 </div><!-- /.row -->
